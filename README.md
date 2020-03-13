@@ -5,6 +5,7 @@
 + 1台linux服务器：CentOS/ubuntu
 + 1款Web服务器：Nginx/Apache/Tomcat
 + 1个独立域名：域名解析时，注意添加www、@记录（通过二级域名，一个域名可以解析到多个服务器）
++ 使用国内服务器需进行备案
 
 具体操作参考：[一篇搞定！Django+vue服务器部署](./chapter1/chapter1.md)
 
@@ -15,9 +16,15 @@
 + [项目结构实践方案](https://github.com/caizhanjin/tornado_framework)（url路由分发、cx_Oracle再封装和引入、sqlalchemy ORM引入、loging配置引入、restful风格编写示例）
 + Tornado服务器部署
 
-### chapter3 大数据展示/实时监控系统页面展示
+### chapter3 数据挖掘相关
++ 数据分析/诊断工具：
+    + [数据描述/统计指标基础和实现](./chapter3/data_dumps/data_dumps.py)：pandas/numpy/scipy基础使用
+    + [整合数据诊断工具](./chapter3/data_dumps/wrap_up.py)
+    + [工具性能和效率测试](./chapter3/data_dumps/wrap_up_with_time.py)
 
-### chapter4 编程思想/优化方向
-+ 微服务架构
+### chapter4 大数据展示/实时监控系统页面展示
+
+### chapter5 编程思想/优化方向
++ 微服务架构【腾讯云tsf】
 + 解耦合/为什么需要封装api
 
