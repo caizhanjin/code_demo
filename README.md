@@ -37,8 +37,11 @@
 
 ### chapter5 Python编程
 + [深入面向对象](./chapter5/OO.md)：属性/方法定义，构造函数，单继承，多继承，多态，魔术方法，类装饰器，访问控制，常用基类
-+ collections
++ [collections模块/数据结构](./chapter5/collections.md)
 + [logging日志模块标准调用](./chapter5/logging.md)
++ 常见数据结构的使用
++ 编写高质量代码
++ 异步任务队列Celery使用
 
 ### 待启动
 + 大数据展示/实时监控系统页面展示
