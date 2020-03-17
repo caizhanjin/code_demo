@@ -1,6 +1,6 @@
 # 一个简单的爬虫架构
 
-![tets](./images/2020031701.png)
+![tets](../images/2020031701.png)
 
 + 爬虫调度端：运行和监控
 + URL解析器：管理待抓取和已抓取url集合
@@ -31,8 +31,14 @@
     + lxml
     + Beautiful Soup：可以同时使用上面两种，更为强大
     
-## 一个例子
+## 一个例子：爬取 百度百科 量化 字条相关1000个网页 
 Tree:
 ``` 
-
+spider_main.py             # 爬虫调度端/程序入口文件
+url_manager.py             # URL解析器
+html_downloader.py         # 网页下载器
+html_parser.py             # 网页解析器
+html_outputer.py           # 最终数据处理：可以保存csv/数据库
 ```
+
+[地址](.//)

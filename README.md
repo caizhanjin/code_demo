@@ -19,7 +19,7 @@
 ### chapter3 数据分析/挖掘相关
 + 数据采集
     + 现有工具：八爪鱼
-    + [一个简单爬虫架构](./chapter3/simple_spider.md)
+    + [一个简单爬虫架构](chapter3/simple_spider/simple_spider.md)
 
 + 数据诊断/清洗：
     + [数据描述/统计指标基础和实现](./chapter3/data_dumps/data_dumps.py)：pandas/numpy/scipy基础使用
@@ -54,4 +54,5 @@
 ### 待启动
 + 大数据展示/实时监控系统页面展示
 + 微服务架构【腾讯云tsf】
++ 一个管理系统界面：多用户/权限
 
