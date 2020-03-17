@@ -47,6 +47,7 @@ class Programer(object):
 
     # @classmethod 能调用类属性，但不能调用实例属性，写法和正常的类方法一致
     # 比静态方法多的是能调用类属性
+    @classmethod
     def say_hi(cls):
         cls.log_msg("Hi.")
 

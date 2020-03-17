@@ -26,16 +26,7 @@
     + [整合数据诊断工具](./chapter3/data_dumps/wrap_up.py)
     + [工具性能和效率测试](./chapter3/data_dumps/wrap_up_with_time.py)
 
-+ 算法
-    + 决策树
-    + 朴素贝叶斯分类
-    + SVM
-    + KNN
-    + K-Means
-    + EM聚类
-    + 关联规则挖掘
-    + PageRank
-    + AdaBoost
++ 算法 : 决策树/朴素贝叶斯分类/SVM/KNN/K-Means/EM聚类/关联规则挖掘/PageRank/AdaBoost
 
 ### chapter4 数据分析实战
 + 
