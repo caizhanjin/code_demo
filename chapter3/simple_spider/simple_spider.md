@@ -41,4 +41,4 @@ html_parser.py             # 网页解析器
 html_outputer.py           # 最终数据处理：可以保存csv/数据库
 ```
 
-[地址](.//)
+[地址](.)
