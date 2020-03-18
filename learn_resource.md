@@ -7,7 +7,6 @@ Python数据预处理（二）- 清洗文本数据 https://www.imooc.com/learn/1
 Python数据预处理（三）- 文本特征向量化 https://www.imooc.com/learn/1123
 Python数据预处理（四）- 特征降维与可视化 https://www.imooc.com/learn/1124
 
-Python开发简单爬虫 https://www.imooc.com/learn/563
 Python最火爬虫框架Scrapy入门与实践  https://www.imooc.com/learn/1017
 Python爬虫实战数据可视化分析 https://www.imooc.com/learn/1210
 数据可视化利器之Matplotlib https://www.imooc.com/learn/1178

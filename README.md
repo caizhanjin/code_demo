@@ -20,6 +20,7 @@
 + 数据采集
     + 现有工具：八爪鱼
     + [一个简单爬虫架构](chapter3/simple_spider/simple_spider.md)
+    + [爬虫框架Scrapy入门与实践](chapter3/scrapy_basic/scrapy_basic.md)
 
 + 数据诊断/清洗：
     + [数据描述/统计指标基础和实现](./chapter3/data_dumps/data_dumps.py)：pandas/numpy/scipy基础使用
@@ -29,21 +30,26 @@
 + 算法 : 决策树/朴素贝叶斯分类/SVM/KNN/K-Means/EM聚类/关联规则挖掘/PageRank/AdaBoost
 
 ### chapter4 数据分析实战
-+ 
++ 基于vue大数据展示页面-自适应窗口设计方案
++ 爬虫实战数据可视化分析：前端ehart/后端tornado
+
 
 ### chapter5 Python编程
 + [深入面向对象](./chapter5/OO.md)：属性/方法定义，构造函数，单继承，多继承，多态，魔术方法，类装饰器，访问控制，常用基类
 + [collections模块/数据结构](./chapter5/collections.md)
 + [logging日志模块标准调用](./chapter5/logging.md)
-+ 常见数据结构的使用
++ 通关：常见数据结构
 + 编写高质量代码
 + 异步任务队列Celery使用
 
 ### chapter6 数据库
 + 数据设计
 
+### chapter7 命令备忘录
++ [git](./chapter7/git.md)
++ [pip/conda/yum](./chapter7/packages.md)
++ [linux](./chapter7/linux.md)
+
 ### 待启动
-+ 大数据展示/实时监控系统页面展示
 + 微服务架构【腾讯云tsf】
 + 一个管理系统界面：多用户/权限
-
