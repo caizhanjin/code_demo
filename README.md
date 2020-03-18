@@ -33,7 +33,6 @@
 + 基于vue大数据展示页面-自适应窗口设计方案
 + 爬虫实战数据可视化分析：前端ehart/后端tornado
 
-
 ### chapter5 Python编程
 + [深入面向对象](./chapter5/OO.md)：属性/方法定义，构造函数，单继承，多继承，多态，魔术方法，类装饰器，访问控制，常用基类
 + [collections模块/数据结构](./chapter5/collections.md)
@@ -44,12 +43,14 @@
 
 ### chapter6 数据库
 + 数据设计
++ [mongodb安装和使用](./chapter6/mongodb.md)
 
 ### chapter7 命令备忘录
 + [git](./chapter7/git.md)
-+ [pip/conda/yum](./chapter7/packages.md)
-+ [linux](./chapter7/linux.md)
++ [pip/conda/yum/docker](./chapter7/packages.md)：虚拟环境管理/python安装/
++ [linux](./chapter7/linux.md)：防火墙
++ [web服务器](./chapter7/web_server.md)：nginx
 
-### 待启动
+### 其他
 + 微服务架构【腾讯云tsf】
 + 一个管理系统界面：多用户/权限
