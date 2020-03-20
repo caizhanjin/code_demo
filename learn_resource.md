@@ -1,6 +1,6 @@
 + Python爬虫实战数据可视化分析 https://www.imooc.com/learn/1210
 + Tornado从入门到进阶 打造支持高并发的技术论坛 https://coding.imooc.com/class/chapter/290.html#Anchor
-+ 程序猿必知必会-MySQL 8.0详解与实战
++ 程序猿必知必会-MySQL 8.0详解与实战 
 + Python 异步任务队列Celery使用 https://www.imooc.com/learn/1051
 
 
