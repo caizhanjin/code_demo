@@ -38,6 +38,7 @@
 + [logging日志模块标准调用](./chapter5/logging.md)
 + [《编写高质量Python代码的59个有效方法》](./chapter5/code_advise/code_advise.md)
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
++ [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
 
 ### chapter6 数据库
 + [数据设计深入理解](./chapter6/db_design.md)
