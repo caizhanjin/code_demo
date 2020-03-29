@@ -3,7 +3,6 @@
 ``` 
 # 升级
 pip install --upgrade pip
-
 ```
 + pip包编译安装
 ```
@@ -22,6 +21,24 @@ vim ~/.bashrc
 alias scrapy='/usr/local/python3/bin/scrapy'
 
 source ~/.bashrc
+```
++ 更换清华安装源
+``` 
+# 临时使用：
+pip 后加参数 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 永久使用：
+# Linux：修改 ~/.pip/pip.conf (没有就创建一个)， 修改 index-url至tuna，内容如下：
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+# windows:直接在user目录中创建一个pip目录，如：C:\Users\xxxx\pip，新建文件pip.ini，内容如下
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+
+# conda源更改：
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
 ```
 
 ## 环境管理
