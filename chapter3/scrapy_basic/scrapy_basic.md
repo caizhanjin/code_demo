@@ -10,7 +10,7 @@
 scrapy startproject tutorial
 
 # 创建爬虫应用
-scrapy startproject tutorial
+scrapy genspider mydomain mydomain.com
 
 # 运行爬虫，spiders文件夹下
 scrapy crawl douban
