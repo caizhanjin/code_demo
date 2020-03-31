@@ -26,6 +26,7 @@ class HandleLaGou(object):
     def handle_city_job(self,city):
         first_request_url = "https://www.lagou.com/jobs/list_python?city=%s&cl=false&fromSearch=true&labelWords=&suginput="%city
         first_response = self.handle_request(method="GET",url=first_request_url)
+        # total_page_search = re.compile(r'class="span\stotalNum">(\d+)</span>')
         total_page_search = re.compile(r'class="span\stotalNum">(\d+)</span>')
         try:
             total_page = total_page_search.search(first_response).group(1)
