@@ -41,6 +41,7 @@
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
 
 ### chapter6 数据库
++ [sql命令](./chapter6/sql.md)
 + [数据设计深入理解](./chapter6/db_design.md)
 + [mysql安装和使用](./chapter6/mongodb.md)
 + [mongodb安装和使用](./chapter6/mongodb.md)
