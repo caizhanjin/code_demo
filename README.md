@@ -16,6 +16,9 @@
 + Tornado服务器部署
 
 ### chapter3 数据分析/挖掘相关
++ 科学计算包使用
+    + [pandas](./chapter3/pandas.md) 
+
 + 数据采集
     + 现有工具：八爪鱼
     + [一个简单爬虫架构](chapter3/simple_spider/simple_spider.md)
