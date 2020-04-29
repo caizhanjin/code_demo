@@ -63,86 +63,84 @@ VALUES
 ## 存储过程：获取分组第一条和最后一条数据
 ``` 
 WITH 
-		A1 AS (
-				SELECT
-						A.ID,
-						A.STEPID,
-						A.STEPTYPE,
-						A.CAP,
-						A.ENG,
-						A.STARTTEMP,
-						A.ENDTEMP
-				FROM
-						SUPPLIER_TESTDATASTEP A
-				WHERE
-						A.BATTERYBARCODE = '00PCEHAN02L03HA1E0000924'
-						AND rownum < 5
-		),
-		
-		A2 AS (
-				SELECT
-						* 
-				FROM
-						(
-						SELECT
-								M2.*,
-								ROW_NUMBER () OVER ( PARTITION BY M2.SUPPLIERTESTDATASTEP_ID ORDER BY M2.DPTTIME ) M2_RW 
-						FROM
-								(SELECT
-										M1.SUPPLIERTESTDATASTEP_ID,
-										M1.VOLTAGE,
-										M1."CURRENT",
-										M1.DPTTIME 
-								FROM
-										"S_00PCEHAN02L03HA1E0000924" M1 
-								WHERE
-										M1.SUPPLIERTESTDATASTEP_ID IN ( SELECT A1.ID FROM A1 )) M2 
-						) M3 
-				WHERE
-						M3.M2_RW = 1
-		),
-		
-		A3 AS (
-				SELECT
-						* 
-				FROM
-						(
-						SELECT
-								N2.*,
-								ROW_NUMBER () OVER ( PARTITION BY N2.SUPPLIERTESTDATASTEP_ID ORDER BY N2.DPTTIME DESC ) N2_RW 
-						FROM
-								(SELECT
-										N1.SUPPLIERTESTDATASTEP_ID,
-										N1.VOLTAGE,
-										N1."CURRENT",
-										N1.DPTTIME 
-								FROM
-										"S_00PCEHAN02L03HA1E0000924" N1 
-								WHERE
-										N1.SUPPLIERTESTDATASTEP_ID IN ( SELECT A1.ID FROM A1 )) N2 
-						) N3 
-				WHERE
-						N3.N2_RW = 1
-		)
+    A1 AS (
+        SELECT
+            A.ID,
+            A.STEPID,
+            A.STEPTYPE,
+            A.CAP,
+            A.ENG,
+            A.STARTTEMP,
+            A.ENDTEMP
+        FROM
+            SUPPLIER_TESTDATASTEP A
+        WHERE
+            A.BATTERYBARCODE = '00PCEHAN02L03HA1E0000924'
+    ),
+    
+    A2 AS (
+        SELECT
+            * 
+        FROM
+            (
+            SELECT
+                M2.*,
+                ROW_NUMBER () OVER ( PARTITION BY M2.SUPPLIERTESTDATASTEP_ID ORDER BY M2.DPTTIME ) M2_RW 
+            FROM
+                (SELECT
+                    M1.SUPPLIERTESTDATASTEP_ID,
+                    M1.VOLTAGE,
+                    M1."CURRENT",
+                    M1.DPTTIME 
+                FROM
+                    "S_00PCEHAN02L03HA1E0000924" M1 
+                WHERE
+                    M1.SUPPLIERTESTDATASTEP_ID IN ( SELECT A1.ID FROM A1 )) M2 
+            ) M3 
+        WHERE
+            M3.M2_RW = 1
+    ),
+    
+    A3 AS (
+        SELECT
+            * 
+        FROM
+            (
+            SELECT
+                N2.*,
+                ROW_NUMBER () OVER ( PARTITION BY N2.SUPPLIERTESTDATASTEP_ID ORDER BY N2.DPTTIME DESC ) N2_RW 
+            FROM
+                (SELECT
+                    N1.SUPPLIERTESTDATASTEP_ID,
+                    N1.VOLTAGE,
+                    N1."CURRENT",
+                    N1.DPTTIME 
+                FROM
+                    "S_00PCEHAN02L03HA1E0000924" N1 
+                WHERE
+                    N1.SUPPLIERTESTDATASTEP_ID IN ( SELECT A1.ID FROM A1 )) N2 
+            ) N3 
+        WHERE
+            N3.N2_RW = 1
+    )
 
 SELECT 
-		A1.STEPID,
-		A1.STEPTYPE,
-		A1.CAP,
-		A1.ENG,
-		A1.STARTTEMP,
-		A1.ENDTEMP,
-		
-		A2.VOLTAGE,
-		A2."CURRENT",
-		A2.DPTTIME,
-		
-		A3.VOLTAGE,
-		A3."CURRENT",
-		A3.DPTTIME
-		
+    A1.STEPID,
+    A1.STEPTYPE,
+    A1.CAP,
+    A1.ENG,
+    A1.STARTTEMP,
+    A1.ENDTEMP,
+    
+    A2.VOLTAGE,
+    A2."CURRENT",
+    A2.DPTTIME,
+    
+    A3.VOLTAGE,
+    A3."CURRENT",
+    A3.DPTTIME
 FROM A1 
-		LEFT JOIN A2 ON A1.ID = A2.SUPPLIERTESTDATASTEP_ID
-		LEFT JOIN A3 ON A1.ID = A3.SUPPLIERTESTDATASTEP_ID
+    LEFT JOIN A2 ON A1.ID = A2.SUPPLIERTESTDATASTEP_ID
+    LEFT JOIN A3 ON A1.ID = A3.SUPPLIERTESTDATASTEP_ID
 ORDER BY A2.DPTTIME 
 ```
