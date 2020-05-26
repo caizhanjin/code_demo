@@ -234,19 +234,19 @@ server {
         listen       80 default_server;
         listen       [::]:80 default_server;
         server_name  _;
-        
-        root /root/tdms/vue;
-        location / {
-                root /root/tdms/vue;
-                try_files $uri $uri/ @router;
-                index index.html;
+      
+        # 注意：如果启用子域名，打包文件时，静态文件需使用相对路径
+        location /h5 {             
+             alias /root/ecms/h5/unpackage/dist/build/h5;
+             try_files $uri $uri/ /h5/index.html;
+             index index.html;
         }
 
-        location /cz {              # 子域名示例
-            alias /home/system_vue/lims_changzheng_vue;
-            try_files $uri $uri/ /cz/index.html;
-            index index.html;
-        }
+        location / {
+                root /root/ecms/web;
+                try_files $uri $uri/ @router;
+                index index.html;
+        } 
 
         location @router {
                 rewrite ^.*$ /index.html last;
