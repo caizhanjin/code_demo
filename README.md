@@ -42,6 +42,7 @@
 + [《编写高质量Python代码的59个有效方法》](./chapter5/code_advise/code_advise.md)
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
++ [单例模式](https://www.cnblogs.com/huchong/p/8244279.html#_lab2_1_3)
 
 ### chapter6 数据库
 + [sql命令](./chapter6/sql.md)
@@ -61,6 +62,7 @@
 
 ### chapter9 web编程
 + 基于vue自适应+响应式管理系统示例
++ VUE+Centos+Github+Jenkins自动化运维
 
 ### 其他
 + 微服务架构【腾讯云tsf】
