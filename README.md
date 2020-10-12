@@ -8,8 +8,15 @@
 + 使用国内服务器需进行备案
 
 具体操作参考：[一篇搞定！Django+vue服务器部署](./chapter1/chapter1.md)
++ [Nginx/uwsgi配置文件示例](./chapter1/config.md)
 
-### chapter2 上手Tornado
+### chapter2 上手Django/Tornado
+#### Django
++ [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
++ [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
++ 个人博客项目代码示例：[ZhanjinBlog后端api](https://github.com/caizhanjin/zhanjinblog_api)
+
+#### Tornado
 + [Tornado基础知识](./chapter2/basics.md)
 + [使用Tornado构建**RESTful**微服务](./chapter2/RESTful.md)
 + [项目结构实践方案](https://github.com/caizhanjin/tornado_framework)（url路由分发、cx_Oracle再封装和引入、sqlalchemy ORM引入、loging配置引入、restful风格编写示例）
@@ -60,10 +67,11 @@
 ### chapter8 分布式
 + [基于python实现RPC](./chapter8/rpc/rpc.md)
 
-### chapter9 web编程/系统设计
+### chapter9 系统/代码设计
 + 基于vue自适应+响应式管理系统示例
 + VUE+Centos+Github+Jenkins自动化运维
-+ [管理系统操作系统通用设计方案](./chapter9/log_operation.md)
++ [管理系统操作系统通用设计方案(附日志操作类)](./chapter9/log_operation.md)
++ [秒杀/抽奖高并发代码实现](./chapter9/seckill/seckill.py)
 
 ### 其他
 + 微服务架构【腾讯云tsf】
