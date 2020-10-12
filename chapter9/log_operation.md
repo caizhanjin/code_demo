@@ -19,6 +19,7 @@ delete(table_name, table_id, operate_user_id)----删除
 recover_delete(log_id)----恢复删除
 select_log_info(log_id)----获取某log详情
 ```
+[LogOperation.py代码](./log_operation/log_util.py)
 
 ## 管理界面设计
 要求：
@@ -26,8 +27,8 @@ select_log_info(log_id)----获取某log详情
 2. 支持表某个字段检索
 3. 能恢复删除记录
 
-台账主界面：
+#### 台账主界面：
 ![资金曲线图](./log_operation/ui.png)
 
-LOG详情界面：
+#### LOG详情界面：
 ![资金曲线图](./log_operation/log_detail.png)
