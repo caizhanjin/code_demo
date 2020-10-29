@@ -66,13 +66,14 @@
 
 ### chapter8 分布式
 + [基于python实现RPC](./chapter8/rpc/rpc.md)
++ 使用RPC协议实现微服务
 
 ### chapter9 系统/代码设计
 + 基于vue自适应+响应式管理系统示例
 + VUE+Centos+Github+Jenkins自动化运维
 + [管理系统操作系统通用设计方案(附日志操作类)](./chapter9/log_operation.md)
 + [秒杀/抽奖高并发代码实现](./chapter9/seckill/seckill.py)
++ [长连接：websocket + 心跳机制实现监听/即时通讯方案](./)
 
 ### 其他
-+ 微服务架构【腾讯云tsf】
 
