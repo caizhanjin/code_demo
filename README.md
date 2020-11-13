@@ -72,8 +72,8 @@
 + 基于vue自适应+响应式管理系统示例
 + VUE+Centos+Github+Jenkins自动化运维
 + [管理系统操作系统通用设计方案(附日志操作类)](./chapter9/log_operation.md)
-+ [秒杀/抽奖高并发代码实现](./chapter9/seckill/seckill.py)
-+ [即时通讯方案：websocket + 心跳机制实现长连接 & redis做缓存](./)
++ [秒杀/抽奖高并发代码实现(乐观锁 + 事务)](./chapter9/seckill/seckill.py)
++ [即时通讯方案：websocket + 心跳机制实现长连接 & redis缓存](./chapter9/chat/chat.md)
 
 ### 其他
 
