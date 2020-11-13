@@ -45,7 +45,6 @@
 ### chapter5 Python编程
 + [深入面向对象](./chapter5/OO.md)：属性/方法定义，构造函数，单继承，多继承，多态，魔术方法，类装饰器，访问控制，常用基类
 + [collections模块/数据结构](./chapter5/collections.md)：常见数据结构使用深入
-+ [logging日志模块标准调用](./chapter5/logging.md)
 + [《编写高质量Python代码的59个有效方法》](./chapter5/code_advise/code_advise.md)
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
@@ -69,6 +68,7 @@
 + 使用RPC协议实现微服务
 
 ### chapter9 系统/代码设计
++ [logging日志模块标准调用](./chapter9/logging.md)
 + 基于vue自适应+响应式管理系统示例
 + VUE+Centos+Github+Jenkins自动化运维
 + [管理系统操作系统通用设计方案(附日志操作类)](./chapter9/log_operation.md)
