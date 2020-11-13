@@ -61,7 +61,6 @@
 + [git](./chapter7/git.md)
 + [pip/conda/yum/docker](./chapter7/packages.md)：虚拟环境管理/python安装
 + [linux](./chapter7/linux.md)：防火墙
-+ [web服务器](./chapter7/web_server.md)：nginx
 + [docker](./chapter7/docker.md)
 
 ### chapter8 分布式
