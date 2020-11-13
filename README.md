@@ -55,6 +55,7 @@
 + [数据设计深入理解](./chapter6/db_design.md)
 + [mysql安装和使用](./chapter6/mongodb.md)
 + [mongodb安装和使用](./chapter6/mongodb.md)
++ Redis缓存
 
 ### chapter7 命令备忘录
 + [git](./chapter7/git.md)
@@ -64,7 +65,7 @@
 + [docker](./chapter7/docker.md)
 
 ### chapter8 分布式
-+ [基于python实现RPC](./chapter8/rpc/rpc.md)
++ [基于python实现RPC(socket编程)](./chapter8/rpc/rpc.md)
 + 使用RPC协议实现微服务
 
 ### chapter9 系统/代码设计

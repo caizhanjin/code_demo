@@ -18,7 +18,6 @@
 + Python-走进Requests库 https://www.imooc.com/learn/736
 + Fiddler工具使用 https://www.imooc.com/learn/37
 + Docker入门 https://www.imooc.com/learn/867
-+ 浏览器开发者工具使用技巧 https://www.imooc.com/learn/759
 + 微服务理解：https://www.imooc.com/learn/785
 + 数据可视化利器之Matplotlib https://www.imooc.com/learn/1178
 + 在线分布式数据库原理与实践 https://www.imooc.com/learn/272
