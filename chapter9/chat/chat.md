@@ -3,6 +3,46 @@
 ## 设计方案
 ![资金曲线图](./即时通讯设计方案.png)
 
+## 生产环境部署
+依赖
+``` 
+pip install django-redis
+pip install dwebsocket
+```
+django-settings.py
+``` 
+# dwebsocket
+# 1. 生产环境需要打开
+# 2. 开发环境有两种方式：1）注释不使用 2）使用命令启动：
+# uwsgi --http :8080 --http-websockets --processes 1 --wsgi-file wsgi.py--async 30 --ugreen --http-timeout 300
+# WEBSOCKET_FACTORY_CLASS = 'dwebsocket.backends.uwsgi.factory.uWsgiWebSocketFactory'
+```
+
+nginx
+``` 
+# 使用http1.1
+           proxy_redirect off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+# 超时设置
+           proxy_connect_timeout 60;
+           proxy_read_timeout 600;
+           proxy_send_timeout 600;
+```
+uwsgi
+``` 
+# 设置socket权限
+http-websockets=true
+processes=4
+async=60
+ugreen=''
+# 响应时间
+http-timeout=600
+socket-timeout=600
+harakiri=600
+```
+
 ## 后端 基于django
 ``` 
 import json

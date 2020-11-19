@@ -10,7 +10,7 @@
 具体操作参考：[一篇搞定！Django+vue服务器部署](./chapter1/chapter1.md)
 + [Nginx/uwsgi配置文件示例](./chapter1/config.md)
 
-### chapter2 上手Django/Tornado
+### chapter2 上手Django/Tornado/vue
 #### Django
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
 + [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
@@ -21,6 +21,9 @@
 + [使用Tornado构建**RESTful**微服务](./chapter2/RESTful.md)
 + [项目结构实践方案](https://github.com/caizhanjin/tornado_framework)（url路由分发、cx_Oracle再封装和引入、sqlalchemy ORM引入、loging配置引入、restful风格编写示例）
 + Tornado服务器部署
+
+#### vue
++ [父子、兄弟参数传递](./chapter2/basics.md)
  
 ### chapter3 数据分析/挖掘相关
 + 科学计算包使用
