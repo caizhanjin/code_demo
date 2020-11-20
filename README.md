@@ -11,6 +11,8 @@
 + [Nginx/uwsgi配置文件示例](./chapter1/config.md)
 
 ### chapter2 上手Django/Tornado/vue
++ [django、flask、tornado对比](https://www.imooc.com/article/24759)： django大而全、flask小而精、tornado性能高
+
 #### Django
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
 + [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
@@ -51,7 +53,11 @@
 + [《编写高质量Python代码的59个有效方法》](./chapter5/code_advise/code_advise.md)
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
++ 性能测试：如何让cpu上升到100%
 + [单例模式](https://www.cnblogs.com/huchong/p/8244279.html#_lab2_1_3)
++ [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
++ 上下文管理器
++ 队列queue
 
 ### chapter6 数据库
 + [sql命令](./chapter6/sql.md)
@@ -77,6 +83,7 @@
 + [管理系统操作系统通用设计方案(附日志操作类)](./chapter9/log_operation.md)
 + [秒杀/抽奖高并发代码实现(乐观锁 + 事务)](./chapter9/seckill/seckill.py)
 + [即时通讯方案：websocket + 心跳机制实现长连接 & redis缓存](./chapter9/chat/chat.md)
++ [websocket长连接压力测试](https://www.cnblogs.com/devtest/p/9966465.html)
 
 ### 其他
 

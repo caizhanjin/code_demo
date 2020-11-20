@@ -6,9 +6,10 @@
 chdir=/root/tdms/tdms_api/tdms
 module=tdms.wsgi:application
 socket=/root/tdms/uwsgi/uwsgi.sock
-#workers=5
 pidfile=/root/tdms/uwsgi/uwsgi.pid
 http=:8000
+# 最好等于 cpu核数的2倍
+#workers=5
 processes=8
 static-map=/static=/root/tdms/tdms_api/tdms/static
 wsgi-file=tdms/wsgi.py
@@ -128,23 +129,12 @@ server {
         index index.html index.htm;
     }
 
-	location /supplier {
-        # 设置连接uWSGI超时时间
-		include uwsgi_params;
-		uwsgi_send_timeout 300;        # 指定向uWSGI传送请求的超时时间，完成握手后向uWSGI传送请求的超时时间。
-        uwsgi_connect_timeout 300;   # 指定连接到后端uWSGI的超时时间。
-		uwsgi_read_timeout 300;        # 指定接收uWSGI应答的超时时间，完成握手后接收uWSGI应答的超时时间。
-		
-        uwsgi_pass unix:/etc/uwsgi/supplier_uwsgi.sock;	
-		uwsgi_ignore_client_abort on;  # 服务器不会主动断开与客户端的连接
-	}
 }
 ```
 
 ## Nginx api
 ``` 
 # 容错机制
-proxy_next_upstream error;
 server {
         listen 9000;
         server_name 10.210.88.31;
@@ -172,8 +162,20 @@ server {
             uwsgi_connect_timeout 600;
             uwsgi_read_timeout 600;
 	    uwsgi_pass unix:/root/ecms/uwsgi/uwsgi.sock;
+	    
+	    # websocket
+            proxy_redirect off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+
+            proxy_connect_timeout 60;
+            proxy_read_timeout 600;
+            proxy_send_timeout 600;
+
        }
 }
+
 ```
 
 
