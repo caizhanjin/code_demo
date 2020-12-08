@@ -12,7 +12,7 @@
 
 ### chapter2 上手Django/Tornado/vue
 + [django、flask、tornado对比](https://www.imooc.com/article/24759)： django大而全、flask小而精、tornado性能高
-
++ [django数据库连接池的使用](https://pypi.org/project/django-db-connection-pool/)、[为什么使用连接池](https://www.cnblogs.com/sharpest/p/6240475.html)
 #### Django
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
 + [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
@@ -58,6 +58,11 @@
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
 + 上下文管理器
 + 队列queue
++ 性能测试工具Locust
++ python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
+``` 
+l
+```
 
 ### chapter6 数据库
 + [sql命令](./chapter6/sql.md)
@@ -65,6 +70,7 @@
 + [mysql安装和使用](./chapter6/mongodb.md)
 + [mongodb安装和使用](./chapter6/mongodb.md)
 + Redis缓存
++ [orm之peewee使用](https://www.cnblogs.com/miaojiyao/articles/5217757.html)
 
 ### chapter7 命令备忘录
 + [git](./chapter7/git.md)
