@@ -12,7 +12,7 @@
 
 ### chapter2 上手Django/Tornado/vue
 + [django、flask、tornado对比](https://www.imooc.com/article/24759)： django大而全、flask小而精、tornado性能高
-+ [django数据库连接池的使用](https://pypi.org/project/django-db-connection-pool/)、[为什么使用连接池](https://www.cnblogs.com/sharpest/p/6240475.html)
++ [django数据库连接池的使用](https://github.com/altairbow/django-db-connection-pool)、[为什么使用连接池](https://www.cnblogs.com/sharpest/p/6240475.html)
 #### Django
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
 + [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
