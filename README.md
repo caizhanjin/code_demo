@@ -60,9 +60,6 @@
 + 队列queue
 + 性能测试工具Locust
 + python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
-``` 
-l
-```
 
 ### chapter6 数据库
 + [sql命令](./chapter6/sql.md)
@@ -71,7 +68,11 @@ l
 + [mongodb安装和使用](./chapter6/mongodb.md)
 + Redis缓存
 + [orm之peewee使用](https://www.cnblogs.com/miaojiyao/articles/5217757.html)
-
++ 高并发下数据解决方案
+    + [淘宝服务端高并发分布式架构演进之路](https://segmentfault.com/a/1190000018626163)
+    + [数据库结构的设计1](https://www.cnblogs.com/llcdbk/p/8183509.html)
+    + [数据库结构的设计2](https://blog.csdn.net/qq_36236890/article/details/82390412)
+    
 ### chapter7 命令备忘录
 + [git](./chapter7/git.md)
 + [pip/conda/yum/docker](./chapter7/packages.md)：虚拟环境管理/python安装
