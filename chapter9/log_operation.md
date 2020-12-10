@@ -7,7 +7,7 @@
 3. delete：在delete前，记录删除前的数据
 
 ## 数据库设计
-![资金曲线图](./log_operation/database.png)
+![图](./log_operation/database.png)
 
 ## 操作类设计
 ``` 
