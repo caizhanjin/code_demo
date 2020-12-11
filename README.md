@@ -1,5 +1,15 @@
 # CODE_DEMO
 
+### chapter0 系统/代码设计
++ [秒杀/抽奖高并发代码实现(乐观锁 + 事务)](./chapter0/seckill/seckill.py)
++ [管理系统操作系统通用设计方案(附日志操作类)](./chapter0/log_operation.md)
++ [即时通讯方案：websocket + 心跳机制实现长连接 & redis缓存](./chapter0/chat/chat.md)
++ [websocket长连接压力测试](https://www.cnblogs.com/devtest/p/9966465.html)
++ [logging日志模块标准调用](./chapter0/logging.md)
++ VUE+Centos+Github+Jenkins自动化运维
++ [基于vue自适应+响应式管理系统示例](./chapter0/data_borad/data_borad.md)
+
+
 ### chapter1 项目上线流程：将网站发布到互联网
 必备条件：
 + 1台linux服务器：CentOS/ubuntu
@@ -67,6 +77,7 @@
 + [mysql安装和使用](./chapter6/mongodb.md)
 + [mongodb安装和使用](./chapter6/mongodb.md)
 + Redis缓存
++ 连接池之Redis连接池
 + [orm之peewee使用](https://www.cnblogs.com/miaojiyao/articles/5217757.html)
 + 高并发下数据解决方案
     + [淘宝服务端高并发分布式架构演进之路](https://segmentfault.com/a/1190000018626163)
@@ -83,14 +94,7 @@
 + [基于python实现RPC(socket编程)](./chapter8/rpc/rpc.md)
 + 使用RPC协议实现微服务
 
-### chapter9 系统/代码设计
-+ [logging日志模块标准调用](./chapter9/logging.md)
-+ [基于vue自适应+响应式管理系统示例](./chapter9/data_borad/data_borad.md)
-+ VUE+Centos+Github+Jenkins自动化运维
-+ [管理系统操作系统通用设计方案(附日志操作类)](./chapter9/log_operation.md)
-+ [秒杀/抽奖高并发代码实现(乐观锁 + 事务)](./chapter9/seckill/seckill.py)
-+ [即时通讯方案：websocket + 心跳机制实现长连接 & redis缓存](./chapter9/chat/chat.md)
-+ [websocket长连接压力测试](https://www.cnblogs.com/devtest/p/9966465.html)
+
 
 ### 其他
 

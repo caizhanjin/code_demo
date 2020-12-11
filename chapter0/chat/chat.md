@@ -1,7 +1,7 @@
 # 即时通讯方案：websocket + 心跳机制实现长连接 & redis缓存
 
 ## 设计方案
-![资金曲线图](./即时通讯设计方案.png)
+![image](./即时通讯设计方案.png)
 
 ## 生产环境部署
 依赖
@@ -34,8 +34,8 @@ uwsgi
 ``` 
 # 设置socket权限
 http-websockets=true
-processes=4
-async=60
+processes=4  # 根据服务器核数情况配置，一般比服务器核数低点
+async=60  # 每个进程中跑多少线程
 ugreen=''
 # 响应时间
 http-timeout=600
@@ -49,11 +49,15 @@ import json
 import time
 import json
 import pickle
+import copy
 
 from utils.format_data import ReturnDataApi
 from dwebsocket.decorators import accept_websocket, require_websocket
 from django_redis import get_redis_connection
 from django.core.cache import cache
+
+from . import models as all_models
+from utils.exceptions import logger_chat
 
 
 class WsConnection(object):
@@ -63,19 +67,22 @@ class WsConnection(object):
     使用时，只需对 on_listen、on_receive 重写或传入callback函数
 
     前后端交互数据固定格式：{"code": 200, "msg": "success", "data": "Hello server."}
+
+    @listen_interval 监听时间间隔
+    @heart_check_interval  前端心跳应答时间
     """
 
     def __init__(
         self,
         ws,
-        listen_interval=1000,
-        heart_check_interval=4000,
+        listen_interval=200,
+        heart_check_interval=20 * 1000,
         on_listen=None,
         on_receive=None,
     ):
 
         self.ws = ws
-        self.listen_interval = listen_interval
+        self.listen_interval = listen_interval/1000
         self.heart_check_interval = heart_check_interval
         self.last_check_time = int(time.time() * 1000)
 
@@ -84,7 +91,7 @@ class WsConnection(object):
 
     def start_listen(self):
         while True:
-            time.sleep(self.listen_interval/1000)
+            time.sleep(self.listen_interval)
             # 客户端超过时间无心跳信息，自动断开
             if int(time.time()) - self.last_check_time > self.heart_check_interval:
                 self.close()
@@ -109,20 +116,22 @@ class WsConnection(object):
             self._on_receive(data)
 
     def _read(self):
-        self.last_check_time = int(time.time() * 1000)
+        receive = self.ws.read()
+        if receive:
+            receive = receive.decode("utf-8")
+            print(receive)
+            self.last_check_time = int(time.time() * 1000)
+            if receive == "ping":
+                self.ws.send("pong".encode('utf-8'))
+            else:
+                try:
+                    _data = json.loads(receive)
+                except Exception as error:
+                    raise ValueError("""
+                    except message format: {"code": 200, "msg": "success", "data": "Hello server."}
+                    """)
 
-        receive = self.ws.read().decode("utf-8")
-        if receive == "ping":
-            self.ws.send("pong".encode('utf-8'))
-        else:
-            try:
-                _data = json.loads(receive)
-            except Exception as error:
-                raise ValueError("""
-                except message format: {"code": 200, "msg": "success", "data": "Hello server."}
-                """)
-
-            self.on_receive(_data)
+                self.on_receive(_data)
 
     def send(self, data=None, code=200, msg=""):
         send_str = json.dumps({
@@ -140,44 +149,46 @@ class RedisList(object):
     """
     redis list数据结构使用封装
     数据存储格式pickle(不可见)
+
+    expire_time 过期时间，默认三个月
     """
 
-    def __init__(self, redis_con, expire_time=60*60*24*3):
+    def __init__(self, redis_con, expire_time=60*60*24*30*3):
 
         self.redis_con = redis_con
         self.expire_time = expire_time
 
-    def add_item(self, key, data):
-        # 分布式锁
+    def h_add_field(self, key, field, value):
+        """哈希增加字段"""
         with cache.lock(key):
-            pickle_str = pickle.dumps(data)
-            result = self.redis_con.rpush(key, pickle_str)
-            # 更新过期时间
-            self.redis_con.expire(key, self.expire_time)
+            self.redis_con.hset(key, field, pickle.dumps(value))
+            self.redis_con.expire(key, self.expire_time)  # 更新过期时间
 
-        return result
+    def h_del_fields(self, key, fields):
+        """哈希删除字段，列表"""
+        for field in fields:
+            self.h_del_field(key, field)
 
-    def fetch_all(self, key):
-        news_list_pickle = self.redis_con.lrange(key, 0, -1)
-        news_list = [pickle.loads(i) for i in news_list_pickle]
+    def h_del_field(self, key, field):
+        """哈希删除字段列表，单个"""
+        if self.redis_con.hexists(key, field):
+            with cache.lock(key):
+                res = self.redis_con.hdel(key, field)
+        else:
+            res = True
 
-        return news_list
+        return res
 
-    def delete(self, key):
-        with cache.lock(key):
-            result = self.redis_con.delete(key)
+    def h_get_all_fields(self, key):
+        _fields = self.redis_con.hgetall(key)
 
-        return result
+        fields = {}
+        for key, value in _fields.items():
+            fields[key.decode('utf8')] = pickle.loads(value)
 
-    def delete_range(self, key, start, end=-1):
-        """删除范围值"""
-        with cache.lock(key):
-            result = self.redis_con.lrem(key, start, end)
-
-        return result
+        return fields
 
     def check_key(self, key):
-
         return self.redis_con.exists(key)
 
 
@@ -193,8 +204,8 @@ class WsView(WsConnection):
     def __init__(
         self,
         ws,
-        listen_interval=1000,
-        heart_check_interval=4000,
+        listen_interval=200,
+        heart_check_interval=20 * 1000,
         on_listen=None,
         on_receive=None,
     ):
@@ -206,22 +217,27 @@ class WsView(WsConnection):
             on_receive=on_receive,
         )
 
-        self.redis_con = RedisList(get_redis_connection("default"))
+        self.redis_cursor = RedisList(get_redis_connection("default"))
         self.current_user = None
         self.WaitSendNews_key = None
-        self.lock_news_length = 0
+        self.sending_news = []
+        self.chat_users = {}
 
     def on_listen(self):
-        if self.current_user is None:
+        if not self.current_user:
             self.send(code=231, msg="申请初始化当前用户")
+            time.sleep(2)
 
-        elif self.redis_con.check_key(self.WaitSendNews_key):
-            news_list = self.redis_con.fetch_all(self.WaitSendNews_key)
-            send_news_list = news_list[self.lock_news_length:]
+        elif self.redis_cursor.check_key(self.WaitSendNews_key):
+            wait_sending_news = {}
+            redis_news = self.redis_cursor.h_get_all_fields(self.WaitSendNews_key)
+            for key, value in redis_news.items():
+                if key not in self.sending_news:
+                    wait_sending_news[key] = value
+                    self.sending_news.append(key)
 
-            if len(send_news_list) > 0:
-                self.send(code=236, msg="接收到新消息", data=send_news_list)
-                self.lock_news_length += len(send_news_list)
+            if wait_sending_news:
+                self.send(code=236, msg="接收到新消息", data=wait_sending_news)
 
     def on_receive(self, res):
         """
@@ -229,43 +245,67 @@ class WsView(WsConnection):
             230 初始化当前用户
             231 申请初始化当前用户[后端发起指令]
             234 发送消息
-            235 信息发送成功
+            235 信息发送成功 return data => {"send_id": "1313_3781971384", "msg": "成功"}
             236 接收到新消息
             237 删除缓存[前端发起指令]
+
+            300 信息推送出现异常 return data => {"send_id": "1313_3781971384", "msg": "失败原因"}
         """
+        # 初始化当前用户
         if res.get("code") == 230:
             self.current_user = res.get("data")
             self.WaitSendNews_key = "WaitSendNews_" + str(self.current_user)
 
+        # 广播新消息
         elif res.get("code") == 234:
-            now_timestamp = int(round(time.time() * 1000))
-
             news_info = res.get("data")
-            news_info["new_id"] = str(news_info["chat_id"]) + "_" + str(now_timestamp)
+            chat_id = news_info.get("chat_id")
+            send_id = news_info["send_id"]
 
-            for receive_user in news_info["receive_users"]:
-                self.redis_con.add_item("WaitSendNews_" + str(receive_user), news_info)
+            try:
+                users = copy.deepcopy(self.chat_users.get(chat_id))
+                if not users:
+                    users = list(all_models.ChatList.users.through.objects.
+                                 filter(chat_id=news_info.get("chat_id")).values_list("user_id", flat=True))
+                    self.chat_users[chat_id] = copy.deepcopy(users)
 
-            self.send(code=235, msg="信息发送成功", data=news_info)
+                for receive_user in users:
+                    news_info["send_user_id"] = self.current_user
+                    news_info["receive_user_id"] = receive_user
+                    self.redis_cursor.h_add_field(
+                        key="WaitSendNews_" + str(receive_user),
+                        field=send_id,
+                        value=news_info,
+                    )
 
+                self.send(code=235, msg="信息发送成功",
+                          data={"send_id": send_id, "msg": "成功"})
+
+            except Exception as error:
+                logger_chat.error("信息发送出现异常" + str(error))
+                self.send(code=300, msg="信息发送出现异常",
+                          data={"send_id": send_id, "msg": str(error)})
+
+        # 清除缓存
         elif res.get("code") == 237:
-            delete_length = res.get("data")
-            news_list = self.redis_con.fetch_all(self.WaitSendNews_key)
-            if len(news_list) == delete_length:
-                if self.redis_con.delete(self.WaitSendNews_key):
-                    self.lock_news_length = 0
-            else:
-                if self.redis_con.delete_range(key=self.WaitSendNews_key, start=delete_length+1):
-                    self.lock_news_length -= delete_length
+            wait_del_fields = res.get("data")
+            for field in wait_del_fields:
+                if self.redis_cursor.h_del_field(self.WaitSendNews_key, field):
+                    self.sending_news.remove(field)
 
 
 @require_websocket
-def test_websocket(request):
-    print("启动websocket")
+def chat_websocket(request):
+    # ws_conn = WsView(ws=request.websocket)
+    # ws_conn.start_listen()
+    try:
+        ws_conn = WsView(ws=request.websocket)
+        ws_conn.start_listen()
 
-    ws_conn = WsView(ws=request.websocket, listen_interval=100)
-
-    ws_conn.start_listen()
+    except Exception as error:
+        # 记录一下异常，继续抛出
+        logger_chat.error("长连接运行中出现BUG：" + str(error))
+        raise error
 ```
 
 ## 前端
@@ -279,8 +319,8 @@ export function WsConnect(url){
     this.is_listen = true
 
     // 心跳
-    this.heart_check_time = 3 * 1000  // 心跳间隔
-    this.reconnect_time = 3 * 1000  // 服务器应答时间
+    this.heart_check_time = 5 * 1000  // 心跳间隔默认5s一个心跳
+    this.reconnect_time = 20 * 1000  // 服务器应答时间，默认20s
     this.checkTimeout = null
     this.serverTimeout = null
 
@@ -393,14 +433,14 @@ export function WsConnect(url){
 <div>
     <div>
         <div v-for="(item, key) in news_list" :key="key">
-            <span>{{item.send_user}} 说：{{item.content}}</span>
+            <span>{{item.send_user_id}} 说：{{item.content}}</span>
         </div>
     </div>
     <el-input v-model="msg"  style="width:200px"></el-input>
     <el-button @click="sendMessage()">发送</el-button>
 </div>
 </template>
-
+ 
 <script>
 export default {
     data(){
@@ -408,7 +448,7 @@ export default {
             msg: "",
             ws_con: true,
 
-            news_list: [],
+            news_list: {},
             current_user:"",
 
         }
@@ -418,11 +458,12 @@ export default {
         console.log(this.current_user)
         var _this = this
         this.ws_connect = new this.$WsConnect(
-            this.$path+"chat/test_websocket/"
+            this.$path+"chat/chat_websocket/"
         )
 
         this.ws_connect.onopen = function(event){
-            _this.ws_connect.sendMessage(_this.current_user, 230, "初始化当前用户")
+            // 初始化当前用户[可以不做，由后端申请初始化]
+            // _this.ws_connect.sendMessage(_this.current_user, 230, "初始化当前用户")
             console.log("开启长连接")
         }
         this.ws_connect.onmessage = function(res){
@@ -430,15 +471,24 @@ export default {
             if(res["code"] == 231){
                 _this.ws_connect.sendMessage(_this.current_user, 230, "初始化当前用户")
 
-            // 235 信息发送成功
+            // 235 信息发送成功 return data => {"send_id": "1313_3781971384", "msg": "成功"}
             }else if(res["code"] == 235){
+                // console.log(res["data"])
+
+            // 300 信息发送失败 return data => {"send_id": "1313_3781971384", "msg": "失败原因"}
+            }else if(res["code"] == 300){
                 // console.log(res["data"])
 
             // 236 接收到新消息
             }else if(res["code"] == 236){
-                console.log(res["data"][0]["send_user"] + " say: " + res["data"][0]["content"])
-                _this.news_list = _this.news_list.concat(res["data"])
-                _this.ws_connect.sendMessage(res["data"].length, 237, "删除缓存[前端发起指令]")
+                var new_keys = []
+                for(var key in res["data"]){
+                    new_keys.push(key)
+                    _this.$set(_this.news_list, key, res["data"][key])
+                }
+                // 解决页面不刷新问题
+                _this.ws_connect.sendMessage(new_keys, 237, "删除缓存[前端发起指令]")
+                console.log(_this.news_list)
             }
         }
         this.ws_connect.onclose = function(event){
@@ -461,14 +511,14 @@ export default {
     },
     methods: {
         sendMessage(){
+            var chat_id = "21"
+            var send_timestamp = new Date().getTime()
             var news_info = {
-                "chat_id": 3939,
-                "send_user": this.current_user,
-                "receive_users": [1908010137, 1908010138, 1908010139, 1908010140],
+                "send_id": chat_id + "_" + send_timestamp,
+                "send_timestamp": send_timestamp,
 
-                "new_id": "",
-                "send_timestamp": new Date().getTime(),
-                "type": 1, 
+                "chat_id": chat_id,
+                "new_type": 1, 
                 "content": this.msg, 
                 "resource_url": "", 
             }
@@ -484,6 +534,7 @@ export default {
 <style scoped>
 
 </style>
+
 ```
 
 
