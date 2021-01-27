@@ -27,6 +27,7 @@
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
 + [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
 + 个人博客项目代码示例：[ZhanjinBlog后端api](https://github.com/caizhanjin/zhanjinblog_api)
++ [一个django sql绑定变量的用法](./chapter2/django_sql.md)：解决高并发时ORM性能上的大坑
 
 #### Tornado
 + [Tornado基础知识](./chapter2/basics.md)
