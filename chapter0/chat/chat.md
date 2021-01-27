@@ -68,6 +68,7 @@ class WsConnection(object):
 
     前后端交互数据固定格式：{"code": 200, "msg": "success", "data": "Hello server."}
 
+    单位s
     @listen_interval 监听时间间隔
     @heart_check_interval  前端心跳应答时间
     """
@@ -75,16 +76,16 @@ class WsConnection(object):
     def __init__(
         self,
         ws,
-        listen_interval=200,
-        heart_check_interval=20 * 1000,
+        listen_interval=0.2,
+        heart_check_interval=20,
         on_listen=None,
         on_receive=None,
     ):
 
         self.ws = ws
-        self.listen_interval = listen_interval/1000
+        self.listen_interval = listen_interval
         self.heart_check_interval = heart_check_interval
-        self.last_check_time = int(time.time() * 1000)
+        self.last_check_time = time.time()
 
         self._on_listen = on_listen
         self._on_receive = on_receive
@@ -93,7 +94,8 @@ class WsConnection(object):
         while True:
             time.sleep(self.listen_interval)
             # 客户端超过时间无心跳信息，自动断开
-            if int(time.time()) - self.last_check_time > self.heart_check_interval:
+            print(time.time() - self.last_check_time)
+            if time.time() - self.last_check_time > self.heart_check_interval:
                 self.close()
                 break
 
@@ -120,7 +122,7 @@ class WsConnection(object):
         if receive:
             receive = receive.decode("utf-8")
             print(receive)
-            self.last_check_time = int(time.time() * 1000)
+            self.last_check_time = time.time()
             if receive == "ping":
                 self.ws.send("pong".encode('utf-8'))
             else:
@@ -204,8 +206,8 @@ class WsView(WsConnection):
     def __init__(
         self,
         ws,
-        listen_interval=200,
-        heart_check_interval=20 * 1000,
+        listen_interval=0.2,
+        heart_check_interval=20,
         on_listen=None,
         on_receive=None,
     ):

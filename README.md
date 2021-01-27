@@ -72,7 +72,7 @@
 + python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
 
 ### chapter6 数据库
-+ [sql命令](./chapter6/sql.md)
++ [不同场景sql示例](./chapter6/sql.md)
 + [数据设计深入理解](./chapter6/db_design.md)
 + [mysql安装和使用](./chapter6/mongodb.md)
 + [mongodb安装和使用](./chapter6/mongodb.md)
