@@ -24,3 +24,5 @@
 
 
 + 数据挖掘学习：https://time.geekbang.org/column/article/73270
++ 23种设计模式：https://www.cnblogs.com/leokale-zz/p/12336503.html
++ 线程池，threading ： https://www.cnblogs.com/lovychen/p/5411743.html

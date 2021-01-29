@@ -8,6 +8,7 @@
 + [logging日志模块标准调用](./chapter0/logging.md)
 + VUE+Centos+Github+Jenkins自动化运维
 + [基于vue自适应+响应式管理系统示例](./chapter0/data_borad/data_borad.md)
++ 23种设计模式学习
 
 
 ### chapter1 项目上线流程：将网站发布到互联网
@@ -64,13 +65,11 @@
 + [《编写高质量Python代码的59个有效方法》](./chapter5/code_advise/code_advise.md)
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
-+ [实战！！！多进程、多线程、进程池以及以上情况的通讯工具类](./chapter5/code/multi_tasks_tools.py)
-+ [性能测试：让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
++ [实战！！！多进程、多线程、进程池以及以上情况的通讯工具类\让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
 + [单例模式](https://www.cnblogs.com/huchong/p/8244279.html#_lab2_1_3)
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
 + 上下文管理器
-+ 队列queue
-+ 性能测试工具Locust
++ [性能测试工具Locust](https://debugtalk.com/post/head-first-locust-user-guide/)
 + python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
 
 ### chapter6 数据库
