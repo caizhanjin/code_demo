@@ -96,6 +96,12 @@ def consumer(name, que):
         print(f"{name} 拿到包子")
 
 
+def dead_loop(name):
+    print(f"{name} 开启...")
+    while True:
+        pass
+
+
 if __name__ == '__main__':
     # 切分任务，分配指定数量工作时使用
     # tasks_orderList = [
@@ -147,3 +153,10 @@ if __name__ == '__main__':
     # 守护进程，防止主程序关闭，中断所有进程
     while True:
         time.sleep(5)
+
+    """测试：100%占满CPU"""
+    task_list = [
+        (dead_loop, (f"进程{i + 1}", ))
+        for i in range(10)
+    ]
+    multi_processing_pools(task_list)

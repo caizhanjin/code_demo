@@ -65,7 +65,7 @@
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
 + [实战！！！多进程、多线程、进程池以及以上情况的通讯工具类](./chapter5/code/multi_tasks_tools.py)
-+ 性能测试：如何让cpu上升到100%
++ [性能测试：让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
 + [单例模式](https://www.cnblogs.com/huchong/p/8244279.html#_lab2_1_3)
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
 + 上下文管理器
