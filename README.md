@@ -1,6 +1,6 @@
 # CODE_DEMO
 
-### chapter0 系统/代码设计
+### chapter0 系统/代码设计【实战】
 + [秒杀/抽奖高并发代码实现(乐观锁 + 事务)](./chapter0/seckill/seckill.py)
 + [管理系统操作系统通用设计方案(附日志操作类)](./chapter0/log_operation.md)
 + [即时通讯方案：websocket + 心跳机制实现长连接 & redis缓存](./chapter0/chat/chat.md)
@@ -8,8 +8,6 @@
 + [logging日志模块标准调用](./chapter0/logging.md)
 + VUE+Centos+Github+Jenkins自动化运维
 + [基于vue自适应+响应式管理系统示例](./chapter0/data_borad/data_borad.md)
-+ 23种设计模式学习
-
 
 ### chapter1 项目上线流程：将网站发布到互联网
 必备条件：
@@ -26,7 +24,7 @@
 + [django数据库连接池的使用](https://github.com/altairbow/django-db-connection-pool)、[为什么使用连接池](https://www.cnblogs.com/sharpest/p/6240475.html)
 #### Django
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
-+ [django+celery+redis框架搭建](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
++ [Django利用celery编写异步代码](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
 + 个人博客项目代码示例：[ZhanjinBlog后端api](https://github.com/caizhanjin/zhanjinblog_api)
 + [一个django sql绑定变量的用法](./chapter2/django_sql.md)：解决高并发时ORM性能上的大坑
 
@@ -71,6 +69,9 @@
 + 上下文管理器
 + [性能测试工具Locust](https://debugtalk.com/post/head-first-locust-user-guide/)
 + python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
++ [23种设计模式学习](https://www.cnblogs.com/leokale-zz/p/12336503.html)
++ [python数据结构](https://blog.csdn.net/weixin_42223833/article/details/86683352)
++ [python排序算法](https://www.cnblogs.com/fwl8888/p/9315730.html)
 
 ### chapter6 数据库
 + [不同场景sql示例](./chapter6/sql.md)
