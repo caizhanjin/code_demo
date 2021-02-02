@@ -72,7 +72,7 @@
 + [23种设计模式学习](https://www.cnblogs.com/leokale-zz/p/12336503.html)
 + [python数据结构](https://blog.csdn.net/weixin_42223833/article/details/86683352)
     + 顺序表：将元素顺序地存放在一块连续的存储区里，list就是一种元素个数可变的线性表
-    + [单向列表](./chapter5/data_structure/single_list.py)：只有一个方向，当前节点指向链表中的下一个节点，而最后一个节点的链接域则指向一个空值
+    + [单向链表](./chapter5/data_structure/single_list.py)：只有一个方向，当前节点指向链表中的下一个节点，而最后一个节点的链接域则指向一个空值
 + [python排序算法](https://www.cnblogs.com/fwl8888/p/9315730.html)
 
 ### chapter6 数据库
