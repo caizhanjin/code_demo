@@ -8,6 +8,7 @@
 + [logging日志模块标准调用](./chapter0/logging.md)
 + VUE+Centos+Github+Jenkins自动化运维
 + [基于vue自适应+响应式管理系统示例](./chapter0/data_borad/data_borad.md)
++ [“大”数据架构](https://www.cnblogs.com/ixiaoyang8/p/14125348.html)
 
 ### chapter1 项目上线流程：将网站发布到互联网
 必备条件：
@@ -64,6 +65,7 @@
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
 + [实战！！！多进程、多线程、进程池以及以上情况的通讯工具类\让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
++ 消息队列
 + [单例模式](https://www.cnblogs.com/huchong/p/8244279.html#_lab2_1_3)
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
 + 上下文管理器
