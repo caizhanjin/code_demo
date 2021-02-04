@@ -66,12 +66,12 @@
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
 + [实战！！！多进程、多线程、进程池以及以上情况的通讯工具类\让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
 + 消息队列
-+ [单例模式](https://www.cnblogs.com/huchong/p/8244279.html#_lab2_1_3)
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
 + 上下文管理器
 + [性能测试工具Locust](https://debugtalk.com/post/head-first-locust-user-guide/)
 + python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
 + [23种设计模式学习](https://www.cnblogs.com/leokale-zz/p/12336503.html)
+    + [单例模式](./chapter5/algorithm/singleton_pattern.md)：目的是确保某一个类只有一个实例存在
 + [python数据结构](https://blog.csdn.net/weixin_42223833/article/details/86683352)
     + 顺序表：将元素顺序地存放在一块连续的存储区里，list就是一种元素个数可变的线性表
     + [单向链表](./chapter5/data_structure/single_list.py)：只有一个方向，当前节点指向链表中的下一个节点，而最后一个节点的链接域则指向一个空值
