@@ -25,7 +25,6 @@
 + [django数据库连接池的使用](https://github.com/altairbow/django-db-connection-pool)、[为什么使用连接池](https://www.cnblogs.com/sharpest/p/6240475.html)
 #### Django
 + [Django基础教程](https://code.ziqiangxuetang.com/django/django-queryset-advance.html)
-+ [Django利用celery编写异步代码](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
 + 个人博客项目代码示例：[ZhanjinBlog后端api](https://github.com/caizhanjin/zhanjinblog_api)
 + [一个django sql绑定变量的用法](./chapter2/django_sql.md)：解决高并发时ORM性能上的大坑
 
@@ -40,7 +39,7 @@
  
 ### chapter3 数据分析/挖掘相关
 + 科学计算包使用
-    + [pandas](./chapter3/pandas.md) 
+    + [pandas](./chapter3/pandas.md) :[loc,iloc,at,iat,ix的用法和区别](https://www.cnblogs.com/datasnail/p/9757081.html)
 
 + 数据采集
     + 现有工具：八爪鱼
@@ -64,8 +63,12 @@
 + [《编写高质量Python代码的59个有效方法》](./chapter5/code_advise/code_advise.md)
 + [异步任务队列Celery使用](./chapter5/celery/celery.md)：进程管理和监控工具
 + [深入理解协程、线程、进程，GIL锁](./chapter5/gil/gil.md)：python高效秘诀
-+ [实战！！！多进程、多线程、进程池以及以上情况的通讯工具类\让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
-+ 消息队列
++ [实战！多进程、多线程、进程池以及以上情况的通讯工具类\让cpu上升到100%](./chapter5/code/multi_tasks_tools.py)
++ 消息队列：异步消息，流量削锋，解耦。[详细理解](https://www.cnblogs.com/linjiqin/p/5720865.html)
+    + [实战！celery+redis实现异步任务，flower监控](https://www.jianshu.com/p/61e573611a06?tdsourcetag=s_pcqq_aiomsg)
+    + [celery使用示例](https://blog.csdn.net/weixin_42245157/article/details/100053747)
+    + [celery文档集合](https://blog.csdn.net/cuomer/article/details/81214438)
+    + [python之四种队列](https://www.jianshu.com/p/55243999aa56)
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
 + 上下文管理器
 + [性能测试工具Locust](https://debugtalk.com/post/head-first-locust-user-guide/)
@@ -89,7 +92,8 @@
     + [淘宝服务端高并发分布式架构演进之路](https://segmentfault.com/a/1190000018626163)
     + [数据库结构的设计1](https://www.cnblogs.com/llcdbk/p/8183509.html)
     + [数据库结构的设计2](https://blog.csdn.net/qq_36236890/article/details/82390412)
-    
+ + hdf5存储：使用场景，金融tick数据合理的一种存储方式，日内用rides(读写速度快)、历史使用(hdf5存储)
+ 
 ### chapter7 命令备忘录
 + [git](./chapter7/git.md)
 + [pip/conda/yum/docker](./chapter7/packages.md)：虚拟环境管理/python安装
