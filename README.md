@@ -71,7 +71,7 @@
     + [celery文档集合](https://blog.csdn.net/cuomer/article/details/81214438)
     + [python之四种队列](https://www.jianshu.com/p/55243999aa56)
 + [asyncio异步编程](https://www.cnblogs.com/zhangyafei/p/13302982.html)
-+ 上下文管理器
++ [上下文管理器](https://www.cnblogs.com/wongbingming/p/10519553.html)
 + [性能测试工具Locust](https://debugtalk.com/post/head-first-locust-user-guide/)
 + python动态特性：动态修改执行中的代码，locals字典，eval执行代码， 
 + [23种设计模式学习](https://www.cnblogs.com/leokale-zz/p/12336503.html)
